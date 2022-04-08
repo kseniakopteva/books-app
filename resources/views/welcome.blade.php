@@ -11,42 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../public/reset-css.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #0a0a0a;
-
-            max-width: 600px;
-            margin: auto;
-        }
-
-        a {
-            color: orangered;
-        }
-
-        article {
-            border: #aaa 1px solid;
-            border-radius: 10px;
-            padding: 1em;
-        }
-
-        article+article {
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 </head>
 
-<body>
-    <h1>Book reviews</h1>
-    <h2>All Books</h2>
+<body class="font-serif max-w-2xl m-auto bg-gray-100">
+    <h1 class="text-4xl mb-3 mt-4">Book reviews</h1>
+    <h2 class="text-2xl mb-3">All Books</h2>
 
     <?php foreach ($books as $book) : ?>
 
-        <article>
+        <article class="border-gray-300 border-solid border rounded-lg p-3 mt-5 bg-white">
             <h1>
-                <a href="/books/<?= $book->slug ?>">
+                <a class="underline text-xl text-red-500 mb-3 block" href="/books/<?= $book->slug ?>">
                     <?= $book->title ?>
                 </a>
             </h1>

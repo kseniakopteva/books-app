@@ -11,38 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../public/reset-css.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #0a0a0a;
-
-            max-width: 600px;
-            margin: auto;
-        }
-
-        a {
-            color: orangered;
-        }
-
-        article {
-            border: #aaa 1px solid;
-            border-radius: 10px;
-            padding: 1em;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 </head>
 
-<body>
-    <h1>Book reviews</h1>
+<body class="font-serif max-w-2xl m-auto bg-gray-100">
+    <h1 class="text-4xl mb-3 mt-4">Book reviews</h1>
 
-    <article>
+    <article class="border-gray-300 border-solid border rounded-lg p-3 mt-5 bg-white">
         <?= $book ?>
     </article>
 
 
-    <a href="/" style="margin-top: 2rem; display: block">Go Back</a>
+    <a class="underline text-md text-red-500 mt-5 block" href="/">Go Back</a>
 
 </body>
 
