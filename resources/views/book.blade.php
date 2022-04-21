@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-layout>
+    <div class="bg-gray-100 h-screen w-screen">
+        <div class="border-x-gray-300 max-w-2xl m-auto border-x-solid border-x bg-white px-5 py-5 h-screen">
+            <h1 class="text-4xl mb-3 mt-4 text-red-500 italic"><a class="text-red-500 italic" href="/">Book reviews</a>
+            </h1>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <article class="rounded-lg p-3 mt-5">
+                <hr>
+                <p> Genres:
+                    @foreach ($genres as $genre)
+                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/genres/{{$genre->slug}}">{{$genre->name}}</a>
+                    @endforeach
+                </p>
+                <p>@if ($book->year != NULL)Year: {{$book->year}}@endif</p>
+                <p>Author:
 
-    <title>Book app</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-</head>
-
-<body class="font-serif max-w-2xl m-auto bg-gray-100">
-    <h1 class="text-4xl mb-3 mt-4">Book reviews</h1>
-
-    <article class="border-gray-300 border-solid border rounded-lg p-3 mt-5 bg-white">
-        <?= $book ?>
-    </article>
+                    @foreach ($book->authors as $author)
+                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/authors/{{$author->slug}}">{{$author->name}}</a>@if(!$loop->last),@endif
+                    @endforeach
+                </p>
 
 
-    <a class="underline text-md text-red-500 mt-5 block" href="/">Go Back</a>
+                <hr>
+                <br>
+                <h1 class="text-xl pb-3 mb-3">
+                    <span class="font-bold">{{ $book->title }}</span>
+                </h1>
 
-</body>
 
-</html>
+                <p> {{ $book->body }} </p>
+            </article>
+
+            <a class="text-md text-red-500 mt-5 block" href="/">Go Back</a>
+        </div>
+    </div>
+</x-layout>

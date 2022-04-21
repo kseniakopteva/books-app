@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -18,32 +21,35 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
 
-    $files = File::files(resource_path("books"));
-
-    $books = collect($files)
-        ->map(function ($file) {
-            $document = YamlFrontMatter::parseFile($file);
-
-            return new Book(
-                $document->title,
-                $document->excerpt,
-                $document->date,
-                $document->body(),
-                $document->slug
-            );
-        });
-
     return view('welcome', [
-        'books' => $books
+        'books' => Book::get(),
+        // 'genres' => Genre::get()
     ]);
 });
 
-Route::get('books/{book}', function ($slug) {
-
+Route::get('books/{book:slug}', function (Book $book, Genre $genre) {
     // find a book by its slug and pass it to a view called "books"
     return view('book', [
-        'book' => Book::find($slug)
+        'book' => $book,
+        'genres' => $book->genres
     ]);
+});
 
-    // slug can only be words with dashes and underscores
-})->where('book', '[A-z_\-]+');
+Route::get('genres/{genre:slug}', function (Genre $genre) {
+    // dd($genre->books());
+    return view('welcome', [
+        'books' => $genre->books
+    ]);
+});
+
+Route::get('authors/{author:slug}', function (Author $author) {
+    return view('welcome', [
+        'books' => $author->books
+    ]);
+});
+
+// Route::get('users/{user:username}', function (User $user) {
+//     return view('profile', [
+//         'user' => $user
+//     ]);
+// });

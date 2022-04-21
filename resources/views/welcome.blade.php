@@ -1,37 +1,41 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-layout>
+    <div class="bg-gray-100 min-h-screen w-screen">
+        <!-- <div class="bg-red-500 h-screen w-screen"> -->
+        <div class=" max-w-2xl m-auto">
+            <h1 class="text-4xl mb-3 pt-4">Book reviews</h1>
+            <h2 class="text-2xl mb-3"><a class="text-red-500 italic" href="/">All Books</a></h2>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+            @foreach ($books as $book)
 
-    <title>Book app</title>
+            <article class="border-gray-300 border-solid border rounded-sm p-5 mt-5 bg-white ">
+                <h1 class="block mb-3">
+                    <a class="text-xl text-red-500" href="/books/{{ $book->slug }}">
+                        {{ $book->title }}
+                    </a>
+                </h1>
+                <hr>
+                <div>
+                    <p> Genres:
+                        @foreach ($book->genres as $genre)
+                        <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/genres/{{$genre->slug}}">{{$genre->name}}</a>@if(!$loop->last),@endif
+                        @endforeach
+                    </p>
+                    <p>@if ($book->year != NULL)Year: {{$book->year}}@endif</p>
+                    <p>Author:
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+                        @foreach ($book->authors as $author)
+                        <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/authors/{{$author->slug}}">{{$author->name}}</a>@if(!$loop->last),@endif
+                        @endforeach
+                    </p>
+                </div>
+                <hr>
+                <br>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+                <p> {{ $book->excerpt }} </p>
+            </article>
 
-</head>
+            @endforeach
 
-<body class="font-serif max-w-2xl m-auto bg-gray-100">
-    <h1 class="text-4xl mb-3 mt-4">Book reviews</h1>
-    <h2 class="text-2xl mb-3">All Books</h2>
-
-    <?php foreach ($books as $book) : ?>
-
-        <article class="border-gray-300 border-solid border rounded-lg p-3 mt-5 bg-white">
-            <h1>
-                <a class="underline text-xl text-red-500 mb-3 block" href="/books/<?= $book->slug ?>">
-                    <?= $book->title ?>
-                </a>
-            </h1>
-            <p><?= $book->excerpt ?></p>
-        </article>
-
-    <?php endforeach; ?>
-
-</body>
-
-</html>
+        </div>
+    </div>
+</x-layout>
