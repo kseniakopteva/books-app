@@ -14,6 +14,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}?ver={{ time() }}">
+
+    <!-- JS -->
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+
 </head>
 
 <body class="font-serif">

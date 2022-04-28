@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Genre;
@@ -19,32 +20,21 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [BookController::class, 'index'])->name('home');
+Route::get('books/{book:slug}', [BookController::class, 'show']);
 
-    return view('welcome', [
-        'books' => Book::get(),
-        // 'genres' => Genre::get()
-    ]);
-});
-
-Route::get('books/{book:slug}', function (Book $book, Genre $genre) {
-    // find a book by its slug and pass it to a view called "books"
-    return view('book', [
-        'book' => $book,
-        'genres' => $book->genres
-    ]);
-});
-
-Route::get('genres/{genre:slug}', function (Genre $genre) {
-    // dd($genre->books());
-    return view('welcome', [
-        'books' => $genre->books
-    ]);
-});
+// Route::get('genres/{genre:slug}', function (Genre $genre) {
+//     return view('welcome', [
+//         'books' => $genre->books,
+//         'currentGenre' => $genre,
+//         'genres' => Genre::all()
+//     ]);
+// })->name('genre');
 
 Route::get('authors/{author:slug}', function (Author $author) {
     return view('welcome', [
-        'books' => $author->books
+        'books' => $author->books,
+        'genres' => Genre::all()
     ]);
 });
 

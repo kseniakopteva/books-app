@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         Author::factory(5)->create();
 
-        Book::factory(4)->create();
+        Book::factory(9)->create();
         book_genre::factory()->create([
             'book_id' => 1,
             'genre_id' => 2
@@ -67,6 +67,27 @@ class DatabaseSeeder extends Seeder
             'book_id' => 3,
             'genre_id' => 1
         ]);
+        book_genre::factory()->create([
+            'book_id' => 5,
+            'genre_id' => 3
+        ]);
+        book_genre::factory()->create([
+            'book_id' => 6,
+            'genre_id' => 4
+        ]);
+        book_genre::factory()->create([
+            'book_id' => 7,
+            'genre_id' => 3
+        ]);
+        book_genre::factory()->create([
+            'book_id' => 8,
+            'genre_id' => 2
+        ]);
+        book_genre::factory()->create([
+            'book_id' => 9,
+            'genre_id' => 1
+        ]);
+
 
         author_book::factory()->create([
             'book_id' => 1,
@@ -87,6 +108,26 @@ class DatabaseSeeder extends Seeder
         author_book::factory()->create([
             'book_id' => 4,
             'author_id' => 5
+        ]);
+        author_book::factory()->create([
+            'book_id' => 5,
+            'author_id' => 1
+        ]);
+        author_book::factory()->create([
+            'book_id' => 6,
+            'author_id' => 5
+        ]);
+        author_book::factory()->create([
+            'book_id' => 7,
+            'author_id' => 2
+        ]);
+        author_book::factory()->create([
+            'book_id' => 8,
+            'author_id' => 3
+        ]);
+        author_book::factory()->create([
+            'book_id' => 9,
+            'author_id' => 4
         ]);
     }
 }

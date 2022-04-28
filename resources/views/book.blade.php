@@ -7,7 +7,7 @@
             <article class="rounded-lg p-3 mt-5">
                 <hr>
                 <p> Genres:
-                    @foreach ($genres as $genre)
+                    @foreach ($book->genres as $genre)
                     <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/genres/{{$genre->slug}}">{{$genre->name}}</a>
                     @endforeach
                 </p>

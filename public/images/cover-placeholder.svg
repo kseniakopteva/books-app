@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="128.696 37.381 300 450" width="300" height="450" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect x="128.696" y="37.381" width="300" height="450" style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(238, 238, 238);"/>
+  <rect x="178.78" y="123.979" width="15.173" height="6" style="stroke-opacity: 0; stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255);" transform="matrix(0.882916, -0.469531, 0.469531, 0.882916, -0.741, 166.69191)"/>
+  <rect x="228.171" width="118.192" height="148.899" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-opacity: 0;" y="183.105"/>
+  <rect x="225.3" y="186.105" width="118.192" height="145.496" style="stroke-opacity: 0; stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255);"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-opacity: 0;" transform="matrix(0.866026, -0.5, 0.5, 0.866026, -60.745827, 191.680038)" d="M 235.825 136.821 H 253.825 A 1 1 0 0 1 254.825 137.821 V 139.821 H 234.825 V 137.821 A 1 1 0 0 1 235.825 136.821 Z" bx:shape="rect 234.825 136.821 20 3 1 1 0 0 1@3458db7b"/>
+  <rect x="188.59" y="161.7" width="16.006" height="7.826" style="stroke-opacity: 0; stroke: rgb(255, 255, 255); fill: rgb(255, 255, 255);" transform="matrix(0.882916, -0.469531, 0.469531, 0.882916, 83.226463, 278.01944)"/>
+  <rect x="211.358" y="193.105" width="118.192" height="148.899" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-opacity: 0;"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(173, 173, 173);" cx="255.099" cy="259.415" rx="2.676" ry="2.676"/>
+  <rect x="251.242" y="342.204" width="45" height="3" style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(173, 173, 173);" transform="matrix(0.927155, -0.374678, 0.369266, 0.929342, -110.265495, 51.802467)"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-opacity: 0; fill: rgb(173, 173, 173);" cx="273.034" cy="253.832" rx="2.676" ry="2.676"/>
+  <text style="fill: rgb(173, 173, 173); font-family: Arial, sans-serif; font-size: 12px; stroke-width: 0px; text-anchor: middle; white-space: pre;" x="270.291" y="213.548">cover</text>
+  <text style="fill: rgb(173, 173, 173); font-family: Arial, sans-serif; font-size: 12px; white-space: pre;" x="245.433" y="324.341">not found</text>
+</svg>

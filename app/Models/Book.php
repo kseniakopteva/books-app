@@ -9,9 +9,22 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['book_id'];
-    // protected $fillable = ['title', 'excerpt', 'body', 'author', 'year'];
+    protected $guarded = ['id'];
 
+    protected $with = ['genres', 'authors'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['genre'] ?? false, function ($query, $genre) {
+            $query->whereHas('genres', fn ($query) => $query->where('slug', $genre));
+        });
+    }
 
     public function genres()
     {

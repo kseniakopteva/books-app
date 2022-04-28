@@ -17,8 +17,8 @@ class BookFactory extends Factory
      */
     public function definition()
     {
-        $body = $this->faker->text($maxNbChars = 300);
-        $title = $this->faker->sentence();
+        $body = $this->faker->text($maxNbChars = 1000);
+        $title = Str::words($this->faker->sentence(), 3, '');
 
         return [
             // 'author_id' => rand(1, 5),
@@ -26,7 +26,7 @@ class BookFactory extends Factory
             'slug' => Str::slug($title, '-'),
             'body' => $body,
             'year' => rand(1888, 2022),
-            'excerpt' => Str::limit($body, 150, $end = '...')
+            'excerpt' => Str::words($body, 10, $end = '...')
         ];
     }
 }
