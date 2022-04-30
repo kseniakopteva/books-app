@@ -8,14 +8,14 @@
                 <hr>
                 <p> Genres:
                     @foreach ($book->genres as $genre)
-                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/genres/{{$genre->slug}}">{{$genre->name}}</a>
+                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/?genre={{$genre->slug}}">{{$genre->name}}</a>
                     @endforeach
                 </p>
                 <p>@if ($book->year != NULL)Year: {{$book->year}}@endif</p>
                 <p>Author:
 
                     @foreach ($book->authors as $author)
-                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/authors/{{$author->slug}}">{{$author->name}}</a>@if(!$loop->last),@endif
+                    <a class="text-red-400 underline @if($loop->first)capitalize @endif" href="/?author={{$author->slug}}">{{$author->name}}</a>@if(!$loop->last),@endif
                     @endforeach
                 </p>
 

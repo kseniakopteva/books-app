@@ -16,13 +16,17 @@ class Book extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            $query
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('body', 'like', '%' . $search . '%');
+            $query->where(fn ($query) =>
+            $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%'));
         });
 
         $query->when($filters['genre'] ?? false, function ($query, $genre) {
             $query->whereHas('genres', fn ($query) => $query->where('slug', $genre));
+        });
+
+        $query->when($filters['author'] ?? false, function ($query, $author) {
+            $query->whereHas('authors', fn ($query) => $query->where('slug', $author));
         });
     }
 

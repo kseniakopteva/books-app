@@ -22,24 +22,3 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', [BookController::class, 'index'])->name('home');
 Route::get('books/{book:slug}', [BookController::class, 'show']);
-
-// Route::get('genres/{genre:slug}', function (Genre $genre) {
-//     return view('welcome', [
-//         'books' => $genre->books,
-//         'currentGenre' => $genre,
-//         'genres' => Genre::all()
-//     ]);
-// })->name('genre');
-
-Route::get('authors/{author:slug}', function (Author $author) {
-    return view('welcome', [
-        'books' => $author->books,
-        'genres' => Genre::all()
-    ]);
-});
-
-// Route::get('users/{user:username}', function (User $user) {
-//     return view('profile', [
-//         'user' => $user
-//     ]);
-// });
