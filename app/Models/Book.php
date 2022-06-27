@@ -9,8 +9,6 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
     protected $with = ['genres', 'authors'];
 
     public function scopeFilter($query, array $filters)
@@ -30,6 +28,11 @@ class Book extends Model
         });
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
@@ -38,5 +41,10 @@ class Book extends Model
     public function authors()
     {
         return $this->belongsToMany(Author::class);
+    }
+
+    public function quotes()
+    {
+        return $this->hasMany(Quote::class);
     }
 }

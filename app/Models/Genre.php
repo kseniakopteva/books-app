@@ -9,11 +9,14 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
     // protected $primaryKey = 'genre_id';
     public function books()
     {
         return $this->belongsToMany(Book::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_genre');
     }
 }

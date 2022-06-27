@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body');
             $table->integer('year');
+            $table->string('cover')->default('cover-placeholder.svg');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
         });

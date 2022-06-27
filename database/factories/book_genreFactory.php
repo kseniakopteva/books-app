@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
-use App\Models\Genre;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,13 +16,8 @@ class book_genreFactory extends Factory
      */
     public function definition()
     {
-
-        // $bookIds = Book::all('id')->all();
-        // $genreIds = Genre::all('id')->all();
-
         return [
-            // 'book_id' => $this->faker->randomElement($bookIds),
-            // 'genre_id' => $this->faker->randomElement($genreIds)
+            //
         ];
     }
 }
