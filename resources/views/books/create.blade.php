@@ -52,8 +52,8 @@
                 @endphp
 
                 @foreach ($genres as $genre)
-                    <input type="checkbox" id="{{ $genre->id }}" name="genres[]">
-                    <label for="genres[]">{{ $genre->name }}</label><br>
+                    <input type="checkbox" id="genre-{{ $genre->id }}" name="genres[]">
+                    <label for="genre-{{ $genre->id }}">{{ $genre->name }}</label><br>
                 @endforeach
 
                 {{-- @error('genre')
@@ -69,8 +69,8 @@
                 @endphp
 
                 @foreach ($authors as $author)
-                    <input type="checkbox" id="{{ $author->id }}" name="authors[]">
-                    <label for="authors[]">{{ $author->name }}</label><br>
+                    <input type="checkbox" id="author-{{ $author->id }}" name="authors[]">
+                    <label for="author-{{ $author->id }}">{{ $author->name }}</label><br>
                 @endforeach
                 {{-- @error('authors[]')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="mb-6">
-                <x-submit-button>Submit</x-submit-button>
+                <x-button>Submit</x-button>
             </div>
 
         </form>

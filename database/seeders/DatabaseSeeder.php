@@ -8,8 +8,10 @@ use App\Models\Book;
 use App\Models\book_genre;
 use App\Models\Genre;
 use App\Models\Review;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\user_genre;
+use App\Models\user_role;
 use Database\Factories\BookGenreFactory;
 use Database\Factories\user_genreFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -33,8 +35,23 @@ class DatabaseSeeder extends Seeder
             'bio' => 'First ever user on this site.',
             'email' => 'ksenija.kopteva@gmail.com',
             'name' => 'Ksenija Kopteva',
-            'image' => 'user-1.jpeg'
+            'image' => 'user-1.jpeg',
+            'role_id' => '3'
         ]);
+
+        Role::factory()->create([
+            'id' => 1,
+            'name' => 'user'
+        ]);
+        Role::factory()->create([
+            'id' => 2,
+            'name' => 'mod'
+        ]);
+        Role::factory()->create([
+            'id' => 3,
+            'name' => 'admin'
+        ]);
+
         User::factory()->create([
             'id' => 2,
             'image' => 'user-2.jpg'

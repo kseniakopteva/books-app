@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="font-serif bg-gray-100 min-h-screen relative pb-32">
+<body class="font-serif bg-gray-100 min-h-[calc(100vh-5rem)] relative pb-32">
     <nav class="px-2 sm:px-4 py-2.5 bg-white shadow-md fixed top-0 w-full z-10">
         <div class="flex flex-wrap justify-between items-center max-w-7xl m-auto">
 
@@ -37,9 +37,10 @@
             <div class="block ">
                 <ul class="flex mt-4 md:space-x-4 md:mt-0 md:text-sm md:font-medium items-center">
 
-                    @if (auth()->check() && auth()->user()->username === 'ksenia')
+                    @if (auth()->check() && auth()->user()->isAdmin())
                         <li><a href="/admin/books/create" class="hover:text-red-400">Add book</a></li>
                         <li><a href="/admin/authors/create" class="hover:text-red-400">Add author</a></li>
+                        <li><a href="/admin/genres/create" class="hover:text-red-400">Add genre</a></li>
                     @endif
 
                     @auth
@@ -74,7 +75,11 @@
 
     <footer class="bg-gray-300 p-4 pb-12 pt-9 absolute bottom-0 w-full h-32">
         <div class="flex justify-between max-w-7xl m-auto">
-            <p>©2022 Ksenia Kopteva</p>
+            <div>
+            <p>If you have any questions or found any bugs, <a href="mailto:ksenija.kopteva@gmail.com" class="underline">send me an email</a></p>
+
+                <p class="text-xs mt-3">©2022 Ksenia Kopteva</p>
+        </div>
             <p><a href="https://github.com/kseniakopteva/books-app"
                     class="underline text-gray-500">https://github.com/kseniakopteva/books-app</a></p>
         </div>
@@ -84,7 +89,7 @@
     @if (session()->has('success'))
     <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" x-transition
         class="fixed top-2 mx-auto italic bg-green-300 py-3 px-4 z-50" style="left: 50%;
-        transform: translateX(-50%); ">
+        transform: translateX(-50%);">
         {!! session('success') !!}</div>
     @endif
 </body>

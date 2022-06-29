@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
@@ -70,3 +71,9 @@ Route::post('admin/books', [BookController::class, 'store'])->middleware('admin'
 
 Route::get('admin/authors/create', [AuthorController::class, 'create'])->middleware('admin');
 Route::post('admin/authors', [AuthorController::class, 'store'])->middleware('admin');
+
+Route::get('admin/genres/create', [GenreController::class, 'create'])->middleware('admin');
+Route::post('admin/genres', [GenreController::class, 'store'])->middleware('admin');
+
+Route::post('admin/promote/{user:username}', [UserController::class, 'promote'])->middleware('admin');
+Route::post('admin/demote/{user:username}', [UserController::class, 'demote'])->middleware('admin');

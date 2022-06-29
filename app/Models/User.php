@@ -43,6 +43,14 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+    public function isAdmin()
+    {
+        return $this->role->name === 'admin';
+    }
+    public function isMod()
+    {
+        return $this->role->name === 'mod';
+    }
 
     public function reviews()
     {
@@ -62,5 +70,10 @@ class User extends Authenticatable
     public function books()
     {
         return $this->belongsToMany(Book::class, 'user_book')->withTimestamps();
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

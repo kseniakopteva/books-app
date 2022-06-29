@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="max-w-4xl m-auto p-10">
+    <div class="max-w-4xl m-auto">
         <h1 class="font-bold text-xl mb-10">Add an author</h1>
         <form method="POST" action="/admin/authors">
             @csrf
@@ -33,7 +33,7 @@
             </div>
 
             <div class="mb-6">
-                <x-submit-button>Submit</x-submit-button>
+                <x-button>Submit</x-button>
             </div>
 
         </form>

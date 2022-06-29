@@ -3,10 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
-class MustBeAdmin
+class MustBeMod
 {
     /**
      * Handle an incoming request.
@@ -17,7 +16,7 @@ class MustBeAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->user()?->isAdmin()) {
+        if (!auth()->user()?->isMod()) {
             abort(403);
         }
         return $next($request);

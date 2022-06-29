@@ -22,7 +22,7 @@
                     <a class="text-red-400 hover:underline hover:text-red-500"
                         href="/profile/{{ $review->author->username }}">
                         {{ $review->author->username }}</a>
-                    @if ($review->author?->username === 'ksenia')
+                    @if ($review->author?->isAdmin())
                         <span class="text-red-500 bg-red-100 uppercase">Admin</span>
                     @endif
                 </h3>
@@ -38,11 +38,11 @@
                     <div x-data="{ show: false }" @click.away="show = false" class="bg-gray-100 p-3 mt-5">
                         <div class="">
                             <div @click="show = ! show">
-                                <button class="text-xs flex space-x-3 items-center w-full">
+                                <a class="text-xs flex space-x-3 items-center w-full cursor-pointer">
                                     <img src="/images/pfp/{{ auth()->user()->image }}?v={{ time() }}"
                                         alt="" width="30" height="30" class="rounded-full self-start">
                                     <span>Leave a comment</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
 
@@ -52,7 +52,7 @@
                                 @csrf
                                 <textarea name="body" class="w-full p-4 text-sm focus:outline-none focus:ring-2 border-2 border-solid border-red-300"
                                     cols="30" rows="5" placeholder="What do you have to say?" required></textarea>
-                                <button type="submit">Post</button>
+                                <x-button>Post</x-button>
                             </form>
                         </div>
                     </div>
@@ -92,17 +92,22 @@
         </div>
         @if ($review->author->username === auth()->user()?->username)
             <div>
-                <form action="/books/{{ $review->book->slug }}/reviews/{{ $review->id }}/destroy" method="POST"
-                    class="">
-                    @csrf
-                    <button type="submit">Delete</button>
-                </form>
+                @if ($review->created_at->format('h') === Carbon\Carbon::now()->format('h'))
+                    <form action="/books/{{ $review->book->slug }}/reviews/{{ $review->id }}/destroy"
+                        method="POST" class="">
+                        @csrf
 
-                <form action="/books/{{ $review->book->slug }}/reviews/{{ $review->id }}/edit" method="POST"
-                    class="">
-                    @csrf
-                    <button type="submit">Edit</button>
-                </form>
+                        <x-button :extrasmall="true">Delete</x-button>
+                    </form>
+
+                    <form action="/books/{{ $review->book->slug }}/reviews/{{ $review->id }}/edit" method="POST"
+                        class="">
+                        @csrf
+
+                        <x-button :extrasmall="true">Edit</x-button>
+                    </form>
+                @endif
+
             </div>
         @endif
 

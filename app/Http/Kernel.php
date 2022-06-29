@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\MustBeAdmin;
+use App\Http\Middleware\MustBeMod;
 use App\Http\Middleware\MustBeOwner;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -67,6 +68,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'admin' => MustBeAdmin::class,
+        'mod' => MustBeMod::class,
+
         'owner' => MustBeOwner::class
     ];
 }

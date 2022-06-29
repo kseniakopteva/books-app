@@ -155,7 +155,7 @@
             </div>
 
             <div class="mb-6">
-                <x-submit-button>Submit</x-submit-button>
+                <x-button>Submit</x-button>
             </div>
 
         </form>

@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'password' => 'required|min:6|max:255'
         ]);
 
-        $user = User::create();
+        $user = User::create($attributes);
         $user->image = 'user.jpg';
 
         // log the user in

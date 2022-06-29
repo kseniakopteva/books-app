@@ -129,4 +129,26 @@ class UserController extends Controller
             //
         }
     }
+
+    public function promote(User $user)
+    {
+        if ($user->role->name === 'user') {
+            User::where('id', $user->id)->update(['role_id' => 2]);
+        } elseif ($user->role->name === 'mod') {
+            User::where('id', $user->id)->update(['role_id' => 3]);
+        }
+
+        return redirect('/profile/' . $user->username);
+    }
+
+    public function demote(User $user)
+    {
+        if ($user->role->name === 'mod') {
+            User::where('id', $user->id)->update(['role_id' => 1]);
+        } elseif ($user->role->name === 'admin') {
+            User::where('id', $user->id)->update(['role_id' => 2]);
+        }
+
+        return redirect('/profile/' . $user->username);
+    }
 }

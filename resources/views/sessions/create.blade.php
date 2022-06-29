@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="mb-6">
-                    <x-submit-button>Log in</x-submit-button>
+                    <x-button>Log in</x-button>
                 </div>
 
             </form>

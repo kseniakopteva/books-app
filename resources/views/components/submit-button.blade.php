@@ -1,1 +1,0 @@
-<button type="submit" class="bg-red-400 rounded py-2 px-4 hover:bg-red-500">{{ $slot }}</button>

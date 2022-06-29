@@ -28,6 +28,8 @@ return new class extends Migration
 
             $table->foreignId('quote_id')->nullable();
 
+            $table->foreignId('role_id')->default('1');
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

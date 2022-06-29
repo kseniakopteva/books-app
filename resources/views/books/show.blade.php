@@ -46,9 +46,9 @@
                         <form action="/profile/favorite/{{ $book->slug }}" method="POST">
                             @csrf
                             @if (in_array($book->id, auth()->user()->books->pluck('id')->toArray()))
-                            <button type="submit" class="py-2 px-5 bg-gray-300 rounded hover:bg-gray-400">Remove from wishlist</button>
+                            <x-button :grayedOut="true">Remove from wishlist</x-button>
                             @else
-                            <button type="submit" class="py-2 px-5 bg-red-300 rounded hover:bg-red-400">Want to read!</button>
+                            <x-button>Want to read!</x-button>
                             @endif
                         </form>
                         @endif

@@ -16,7 +16,7 @@
         @enderror
 
         <div class="flex justify-end mt-4">
-            <x-submit-button>Edit</x-submit-button>
+            <x-button>Edit</x-button>
         </div>
     </form>
 </x-layout>
